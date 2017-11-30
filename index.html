@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css?family=Kanit:600,800" rel="stylesheet">
+    <link href="'https://fonts.googleapis.com/css?family=Roboto:100,300,600'" rel="stylesheet">
+    <link href ="https://fonts.googleapis.com/css?family=Ubuntu:300" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>ReactOpt Website</title>
+  </head>
+
+  <body>
+    <!-- Header Content -->
+    <div class="jumbotron">
+      <div id="jumbotroncontent">
+        <figure id="logoContainer">
+          <img class= "img" src="ReactoptLogo.png" id="reactopt" width=70%>
+          <canvas id="radar" width=200 height=200></canvas>
+        </figure>
+
+        <div id="caption">
+          <h1 id="header">React performance optimization CLI tool</h1>
+          <div id="topbuttons">
+            <a class="github-button" href="https://github.com/reactopt/reactopt" data-size="large" aria-label="Follow @reactopt on GitHub">Follow @reactopt</a>
+            <a class="github-button" href="https://github.com/reactopt/reactopt" data-size="large" data-show-count="true" aria-label="Star reactopt/reactopt on GitHub">Star</a>
+          </div>
+        </div>
+      </div>  
+    </div>
+
+    <!-- Navbar-to-What Content -->
+    <div id="contentContainer">
+      <div id= "navbar">
+        <ul class="main-nav">
+          <li class="nav-item active"><a class="nav-link" href="#what">What Is It?</a></li>
+          <li class="nav-item active"><a class="nav-link" href="#documentation">Documentation</a></li>
+          <li class="nav-item active"><a class="nav-link" href="#team">Team</a></li>
+          <li class="nav-item active"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <img src="animation.png" width=200 alt="animation" id="animation">
+      </div>
+     
+
+      <div id="what">
+        <p> Reactopt identifies specific events that may be causing unnecessary re-rendering of components in your application, and which components may benefit from utilizing shouldComponentUpdate.</p>
+            
+        <p>Prior to React 16, the module react-addons-perf helped identify locations that developers may want to implement shouldComponentUpdate to limit over-rendering. However, since the module is no longer supported we created Reactopt to fill the gap, and also provide increased functionality for any version of React.</p>
+            
+        <p>Upon initiating Reactopt, your application will be launched in a browser for you to interact with. After you're finished and type 'done', you will see an audit on your application's component performance.</p>
+
+      </div>
+    </div>
+
+    <div id="team">
+        <img src="Candace.png" alt="Avatar" class="w3-card-4 w3-circle" style="width:300px">
+        <h2>Candace Rogers</h2>
+        <img src="Pam.png" alt="Avatar" class="w3-card-4 w3-circle" style="width:300px">
+        <h2>Pam Lam</h2>
+        <img src="Selina.png" alt="Avatar" class="w3-card-4 w3-circle" style="width:300px">
+        <h2>Selina Zawacki</h2>
+        <img src="Vu.png" alt="Avatar" class="w3-card-4 w3-circle" style="width:300px">
+        <h2>Vu Phung</h2>
+    </div>
+
+      <footer id="footer">
+        <img src="CacheMoney.png" id="cachemoney" height="150px" width="150px">
+        <p id="footerp">&copy; Cache Money Collective 2017</p>
+      </footer>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+   <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
+
+
+  <script>
+var line = {
+	x: 85,
+	y: 85,
+	length: 85,
+	angle: 0,
+	speed: Math.PI / 360.,
+	end: {
+		x: 85,
+		y: 0
+	}
+}
+
+line.draw = function(){
+	this.angle += this.speed;
+    this.end.x = this.x + this.length * Math.cos(this.angle);
+	this.end.y = this.y + this.length * Math.sin(this.angle);
+	ctx.strokeStyle = "#383";
+	ctx.moveTo(this.x,this.y);
+	ctx.lineTo(this.end.x,this.end.y);
+	ctx.stroke();
+
+
+	var i = Ball.all.length;
+	while(i--){
+		if (pointToLineDistance(line, line.end, Ball.all[i] ) < 1.
+			&& lineDistance(line.end, Ball.all[i] ) < line.length){
+		}
+	}
+	ctx.restore();
+}
+
+
+function Ball(x,y,r){
+}
+Ball.all = [];
+Ball.prototype = {
+  draw: function(){
+  },
+
+};
+function Blip(x,y,t){
+}
+Blip.all = [];
+
+var canvas = document.getElementById("radar");
+var ctx = canvas.getContext('2d');
+
+
+function main() {
+  // Clear display
+    ctx.fillStyle = "rgba(0, 0, 0, .01)";
+    ctx.beginPath();
+    ctx.arc(85, 70, 85, 12, Math.PI * 2, true); //leaves the arc
+    ctx.globalAlpha = 0.2
+    ctx.fill();
+    ctx.restore();
+
+	line.draw();
+}
+setInterval( main, 2000 / 80);
+       
+  </script>
+</html>
+
+    <!-- <div id= "navbar">
+    <nav class="navbar navbar-toggleable-md navbar-dark fixed-top bg-company-black">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">ReactOpt</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    </div> -->
+
+       
+      <!-- Example row of columns -->
+      <!-- <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div> -->
