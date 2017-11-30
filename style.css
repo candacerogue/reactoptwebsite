@@ -31,10 +31,7 @@ h1 {
  #jumbotronContent{
    margin-top: 10%;
 
- } 
-figure {
-  padding-bottom: 20px;
-} 
+ }  
 
 #reactopt {
     width: 770px;
@@ -48,7 +45,7 @@ figure {
   }
 
 #caption{
-    margin-top: -5%;
+    margin-top: -2%;
     margin-left: 32%;
     align-content: center;
   }
@@ -61,13 +58,14 @@ figure {
       display:inline-block;
       margin: 0 auto;
       position:relative;
+      padding-bottom: 20px;
 }
 
 canvas {
       position:relative;
       z-index:1;
       margin-left: 52%;
-      margin-top: 23%;
+      margin-top: 22%;
 }
 
 
@@ -84,11 +82,13 @@ a{
   background: url('targets.png');
   z-index: 100;
   height: 1500px;
+  margin-bottom: 100px;
 }  
 
 ul{
   display: inline-block;
   vertical-align:top;
+  list-style: none;
 }
 .nav-item{
     list-style: none;
@@ -124,7 +124,7 @@ p{
 
 #demotext{
   float: right;
-  margin-right: -10%;
+  margin-right: -5%;
   padding-bottom: 0;
 }
 
@@ -145,29 +145,71 @@ position: relative;
   z-index: 1;
 }
 
-/* #bigRadar{
-
-} */
 
 h2 {
   font-family: 'Ubuntu', sans-serif; !important;
   text-transform: uppercase;
 }
 
-.row{
-    -moz-column-count: 3;
-    -webkit-column-count: 3;
-    column-count: 3;
-    -moz-column-width: 50px;
-    -webkit-column-width: 50px;
-    column-width: 50px;
-    font-family: 'Roboto', sans-serif; !important;
-  }
-
 #team{
   -moz-column-count: 4;
   -webkit-column-count: 4;
   column-count: 4;
+}
+#teamtext{
+  width: 600px;
+  z-index: 1;
+}
+
+#meet-our-team{
+ margin-left: 10px;
+}
+
+.team{
+  position: relative; 
+  border-radius: 50%;
+}
+
+.member{
+  list-style: none;
+  display: inline-block;
+  margin-top: -50px;
+}
+
+figcaption{
+  width: 200px; 
+  height: 200px; 
+  position: absolute; 
+  top: 0px; right: 0;bottom: 0;left: 0; 
+  border-radius: 40%; 
+  background-color: rgba(0,0,0,.5); 
+  color:#19d944;
+  line-height: 160px; 
+ 
+}
+
+h3{
+  text-align: center;
+}
+
+.icons{
+  width:75px;
+}
+
+caption{
+  font-family: 'Roboto', sans-serif; !important;
+  font-size: 1em;
+
+}
+
+/*css animation to reveal figcaptions*/
+figcaption{
+  opacity:0;
+  transition: opacity .3s;
+}
+
+figcaption:hover{
+  opacity:1;
 }
 
 #cachemoney {
@@ -180,5 +222,12 @@ h2 {
 }
 
 #footerp{
-  margin-left: 40%;
+  margin-left: 35%;
+  font-family: 'Ubuntu';
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.3em;
+  line-height: 2;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
 }
