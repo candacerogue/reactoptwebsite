@@ -20,7 +20,7 @@
       <div id="jumbotroncontent">
         <figure id="logoContainer">
           <img class= "img" src="assets/ReactoptLogo.png" id="reactopt" width=70%>
-          <canvas id="radar" width=200 height=200></canvas>
+          <canvas id="radar" height=200 width=200></canvas>
         </figure>
 
         <div id="caption">
@@ -40,7 +40,7 @@
           <li class="nav-item active"><a class="nav-link" href="#what">What Is It?</a></li>
           <li class="nav-item active"><a class="nav-link" href="https://www.npmjs.com/package/reactopt" target="_blank">Documentation</a></li>
           <li class="nav-item active"><a class="nav-link" href="#meet-our-team">Team</a></li>
-          <li class="nav-item active"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item active"><a class="nav-link" href="#text">Contact</a></li>
         </ul>
         <img src="assets/animation.png" width=200 alt="animation" id="animation">
       </div>
@@ -66,7 +66,7 @@
 
     
     <section id="meet-our-team">
-      <img src="assets/Team.png" width=500>
+      <img id="team-text" src="assets/Team.png" width=500>
         <ul>
             <li class="member">
               <figure class="team">
@@ -98,10 +98,17 @@
             </li>
     </section>
 
+    <section class="typing">
+      <div class='console-container'><span id='text'></span>
+        <div class='console-underscore' id='console'>&#95;</div>
+      </div>
+    </section>
+
       <footer id="footer">
         <img src="assets/CacheMoney.png" id="cachemoney" height="150px" width="150px">
         <p id="footerp">&copy; Cache Money Collective 2017</p>
       </footer>
+      
 
 
 
@@ -118,13 +125,13 @@
 
   <script>
 var line = {
-	x: 85,
-	y: 85,
-	length: 85,
+	x: 100,
+	y: 100,
+	length: 90,
 	angle: 0,
 	speed: Math.PI / 360.,
 	end: {
-		x: 85,
+		x: 100,
 		y: 0
 	}
 }
@@ -169,7 +176,7 @@ function main() {
   // Clear display
     ctx.fillStyle = "rgba(0, 0, 0, .01)";
     ctx.beginPath();
-    ctx.arc(85, 70, 85, 12, Math.PI * 2, true); //leaves the arc
+    ctx.arc(100, 100, 90, 15, Math.PI * 2, true); //leaves the arc
     ctx.globalAlpha = 0.2
     ctx.fill();
     ctx.restore();
@@ -178,60 +185,58 @@ function main() {
 }
 setInterval( main, 2000 / 80);
        
+
+
+  //Animation TEXT
+  consoleText(['Want to reach out ?', 'ReactOpt@gmail.com'], 'text',['tomato','rebeccapurple','lightblue']);
+
+  function consoleText(words, id, colors) {
+    if (colors === undefined) colors = ['#fff'];
+    var visible = true;
+    var con = document.getElementById('console');
+    var letterCount = 1;
+    var x = 1;
+    var waiting = false;
+    var target = document.getElementById(id)
+    // target.setAttribute('style', 'color:' + colors[0])
+    window.setInterval(function() {
+
+      if (letterCount === 0 && waiting === false) {
+        waiting = true;
+        target.innerHTML = words[0].substring(0, letterCount)
+        window.setTimeout(function() {
+          var usedColor = colors.shift();
+          colors.push(usedColor);
+          var usedWord = words.shift();
+          words.push(usedWord);
+          x = 1;
+          // target.setAttribute('style', 'color:' + colors[0])
+          letterCount += x;
+          waiting = false;
+        }, 1000)
+      } else if (letterCount === words[0].length + 1 && waiting === false) {
+        waiting = true;
+        window.setTimeout(function() {
+          x = -1;
+          letterCount += x;
+          waiting = false;
+        }, 1000)
+      } else if (waiting === false) {
+        target.innerHTML = words[0].substring(0, letterCount)
+        letterCount += x;
+      }
+    }, 120)
+    window.setInterval(function() {
+      if (visible === true) {
+        con.className = 'console-underscore hidden'
+        visible = false;
+
+      } else {
+        con.className = 'console-underscore'
+
+        visible = true;
+      }
+    }, 400)
+  } 
   </script>
 </html>
-
-    <!-- <div id= "navbar">
-    <nav class="navbar navbar-toggleable-md navbar-dark fixed-top bg-company-black">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">ReactOpt</a>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
-    </div> -->
-
-       
-      <!-- Example row of columns -->
-      <!-- <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div> -->
