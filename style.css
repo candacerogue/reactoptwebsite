@@ -37,9 +37,6 @@ text-rendering: optimizeLegibility;
  text-align: center;
 }
 
-#logoContainer{
- 
-}
 
 #reactopt {
   width: 770px;
@@ -224,8 +221,12 @@ figcaption:hover{
 opacity:1;
 }
 
+.typing{
+  margin-left: -5%;
+}
+
 #cachemoney {
-  margin-left: 46%;
+  margin-left: 42%;
   align-content: center;
 }
 
@@ -246,14 +247,28 @@ text-rendering: optimizeLegibility;
 /*  } */
 
 
-/* Desktops and laptops ----------- */
-/* @media only screen  and (min-width : 1224px) {
+/* Desktops and laptops ----------- */ 
+@media only screen  and (min-width : 1224px) {
 /* Styles */
-/*#reactopt {
+#reactopt {
   width: 770px;
-  height: 200px;
-/*  }
-} */
+  height: auto;
+}
+canvas {
+  display : none;
+}
+#caption {
+  margin-top: 35%;
+}
+#navbar {
+  margin-top: 3.5%;
+}
+#footerp{
+  margin-left: 25%;
+  text-align: center;
+}
+
+}
 
 /* Large screens ----------- */
 @media only screen  and (max-width : 1024px) {
